@@ -16,7 +16,13 @@ import {
   TrendingUp,
   ChevronDown,
   ChevronRight,
-  Map
+  Map,
+  ShoppingCart,
+  History,
+  DollarSign,
+  ShoppingBag,
+  Package,
+  Tractor
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -36,6 +42,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       [label]: !prev[label]
     }));
   };
+
   const menuItems = [
     {
       path: '/dashboard',
@@ -79,11 +86,45 @@ const Sidebar = ({ isOpen, onClose }) => {
       icon: FlaskConical,
       always: true
     },
+    // ✅ NUEVO ITEM - CU10: Labores Agrícolas
+    {
+      path: '/labores',
+      label: 'Labores Agrícolas',
+      icon: Tractor, // Icono apropiado para labores agrícolas
+      always: true
+    },
+    // ✅ NUEVO ITEM - CU15: Productos Cosechados
+    {
+      path: '/productos-cosechados',
+      label: 'Productos Cosechados',
+      icon: Package, // Icono apropiado para productos cosechados
+      always: true
+    },
     {
       path: '/campaigns',
       label: 'Campañas',
       icon: Calendar,
       always: true
+    },
+    {
+      path: '/pedidos',
+      label: 'Ventas y Pagos',
+      icon: ShoppingCart,
+      always: true,
+      subMenu: [
+        { path: '/pedidos', label: 'Gestión de Pedidos', icon: ShoppingCart },
+        { path: '/historial-ventas', label: 'Historial de Ventas', icon: History },
+      ]
+    },
+    {
+      path: '/pedidos-insumos',
+      label: 'Ventas de Insumos',
+      icon: ShoppingBag,
+      always: true,
+      subMenu: [
+        { path: '/pedidos-insumos', label: 'Mis Pedidos de Insumos', icon: Package },
+        { path: '/pedidos-insumos/nuevo', label: 'Solicitar Insumos', icon: ShoppingBag },
+      ]
     },
     {
       path: '/auditoria',

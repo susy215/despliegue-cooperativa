@@ -27,10 +27,32 @@ import InsumoFormPage from './pages/InsumoFormPage';
 import CampaignsPage from './pages/CU9_Campaigns/CampaignsPage';
 import CampaignDetailPage from './pages/CU9_Campaigns/CampaignDetailPage';
 
+// ===== CU10: Gestión de Labores Agrícolas =====
+import LaborPage from './pages/LaborPage';
+import LaborFormPage from './pages/LaborFormPage';
+import LaborDetailPage from './pages/LaborDetailPage';
+
 // ===== CU11: Reportes =====
 import LaborsByCampaignReport from './pages/CU11_Reports/LaborsByCampaignReport';
 import ProductionByCampaignReport from './pages/CU11_Reports/ProductionByCampaignReport';
 import ProductionByPlotReport from './pages/CU11_Reports/ProductionByPlotReport';
+
+// ===== CU12: Sistema de Pagos =====
+import PedidosPage from './pages/CU12_Pagos/PedidosPage';
+import PedidoFormPage from './pages/CU12_Pagos/PedidoFormPage';
+import PedidoDetailPage from './pages/CU12_Pagos/PedidoDetailPage';
+import HistorialVentasPage from './pages/CU12_Pagos/HistorialVentasPage';
+
+// ===== CU13: Ventas de Insumos =====
+import PedidosInsumosPage from './pages/CU13_VentasInsumos/PedidosInsumosPage';
+import PedidoInsumoFormPage from './pages/CU13_VentasInsumos/PedidoInsumoFormPage';
+import PedidoInsumoDetailPage from './pages/CU13_VentasInsumos/PedidoInsumoDetailPage';
+
+// ===== CU15: Productos Cosechados =====
+import ProductosCosechadosPage from './pages/ProductosCosechadosPage';
+import ProductosCosechadosFormPage from './pages/ProductosCosechadosFormPage';
+import ProductosCosechadosDetailPage from './pages/ProductosCosechadosDetailPage';
+
 // Componente protegido con layout
 const ProtectedLayout = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
@@ -240,6 +262,8 @@ function App() {
                 </ProtectedLayout>
               }
             />
+
+            {/* ===== CU9: CAMPAÑAS ===== */}
             <Route
               path="/campaigns"
               element={
@@ -256,6 +280,42 @@ function App() {
                 </ProtectedLayout>
               }
             />
+
+            {/* ===== CU10: LABORES AGRÍCOLAS ===== */}
+            <Route
+              path="/labores"
+              element={
+                <ProtectedLayout>
+                  <LaborPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/labores/nueva"
+              element={
+                <ProtectedLayout>
+                  <LaborFormPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/labores/editar/:id"
+              element={
+                <ProtectedLayout>
+                  <LaborFormPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/labores/:id"
+              element={
+                <ProtectedLayout>
+                  <LaborDetailPage />
+                </ProtectedLayout>
+              }
+            />
+
+            {/* ===== CU11: REPORTES ===== */}
             <Route
               path="/reports/labors"
               element={
@@ -280,6 +340,109 @@ function App() {
                 </ProtectedLayout>
               }
             />
+            
+            {/* ===== CU12: Sistema de Pagos ===== */}
+            <Route
+              path="/pedidos"
+              element={
+                <ProtectedLayout>
+                  <PedidosPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/pedidos/nuevo"
+              element={
+                <ProtectedLayout>
+                  <PedidoFormPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/pedidos/:id"
+              element={
+                <ProtectedLayout>
+                  <PedidoDetailPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/pedidos/:id/editar"
+              element={
+                <ProtectedLayout>
+                  <PedidoFormPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/historial-ventas"
+              element={
+                <ProtectedLayout>
+                  <HistorialVentasPage />
+                </ProtectedLayout>
+              }
+            />
+            
+            {/* ===== CU13: Ventas de Insumos ===== */}
+            <Route
+              path="/pedidos-insumos"
+              element={
+                <ProtectedLayout>
+                  <PedidosInsumosPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/pedidos-insumos/nuevo"
+              element={
+                <ProtectedLayout>
+                  <PedidoInsumoFormPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/pedidos-insumos/:id"
+              element={
+                <ProtectedLayout>
+                  <PedidoInsumoDetailPage />
+                </ProtectedLayout>
+              }
+            />
+
+            {/* ===== CU15: PRODUCTOS COSECHADOS ===== */}
+            <Route
+              path="/productos-cosechados"
+              element={
+                <ProtectedLayout>
+                  <ProductosCosechadosPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/productos-cosechados/nuevo"
+              element={
+                <ProtectedLayout>
+                  <ProductosCosechadosFormPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/productos-cosechados/:id"
+              element={
+                <ProtectedLayout>
+                  <ProductosCosechadosDetailPage />
+                </ProtectedLayout>
+              }
+            />
+            <Route
+              path="/productos-cosechados/:id/editar"
+              element={
+                <ProtectedLayout>
+                  <ProductosCosechadosFormPage />
+                </ProtectedLayout>
+              }
+            />
+            
             {/* Ruta por defecto - redirige al dashboard */}
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
