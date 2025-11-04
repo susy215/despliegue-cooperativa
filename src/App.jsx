@@ -23,6 +23,9 @@ import InsumosPage from './pages/InsumosPage';
 import InsumoDetailPage from './pages/InsumoDetailPage';
 import InsumoFormPage from './pages/InsumoFormPage';
 
+// ===== PWA Install Prompt =====
+import PWAInstallPrompt from './components/PWAInstallPrompt';
+
 // ===== CU9: Gestión de Campañas =====
 import CampaignsPage from './pages/CU9_Campaigns/CampaignsPage';
 import CampaignDetailPage from './pages/CU9_Campaigns/CampaignDetailPage';
@@ -80,6 +83,7 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="App">
+          <PWAInstallPrompt />
           <Routes>
             {/* Ruta pública de login */}
             <Route path="/login" element={<LoginPage />} />
